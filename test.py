@@ -60,7 +60,7 @@ if __name__ == "__main__":
     t = time.time()
     out_cuda = Trilinear_interpolation_cuda.apply(feats2, points)
     torch.cuda.synchronize()
-    print('   cuda fw time', time.time()-t, 's')
+    print('cuda fw time', time.time()-t, 's')
 
     t = time.time()
     out_py = trilinear_interpolation_py(feats1, points)
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     loss2 = out_cuda.sum()
     loss2.backward()
     torch.cuda.synchronize()
-    print('   cuda bw time', time.time()-t, 's')
+    print('cuda bw time', time.time()-t, 's')
 
     t = time.time()
     loss1 = out_py.sum()
